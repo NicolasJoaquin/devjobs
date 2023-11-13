@@ -29,12 +29,8 @@ class CreateJob extends Component
     public function createJob()
     {
         $data = $this->validate();
-        // Post::create([
-        //     'title' => $this->title,
-        //     'content' => $this->content,
-        // ]);
- 
-        // return redirect()->to('/posts');
+        $image = $this->image->store('public/jobs');
+        $image_name = str_replace('public/jobs/','', $image);
     }
     public function render()
     {
@@ -45,5 +41,4 @@ class CreateJob extends Component
             'categories' => $categories,
         ]);
     }
-
 }
