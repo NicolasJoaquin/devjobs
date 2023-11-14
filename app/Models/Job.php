@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Job extends Model
 {
     use HasFactory;
+    protected $casts = [ 'last_date' => 'date'];
     protected $fillable = [
         "title",
         "rate_id",

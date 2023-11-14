@@ -91,13 +91,13 @@
             accept="image/*"
         />
         {{-- Two way data binding / Enlace de datos bidireccional --}}
-        <div class="my-5 w-96">
+        {{-- <div class="my-5 w-96">
             @if ($image)
                 Imagen:
                 <img src="{{ $image->temporaryUrl() }}" alt="Imagen subida" class="rounded-xl shadow-md">
             @endif
         </div>
-        <x-input-error :messages="$errors->get('image')" class="mt-2" />
+        <x-input-error :messages="$errors->get('image')" class="mt-2" /> --}}
     </div>
     <x-primary-button class="w-full justify-center">
         {{ __('Crear vacante') }}

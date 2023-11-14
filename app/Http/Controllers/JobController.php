@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Job;
 use Illuminate\Http\Request;
 
 class JobController extends Controller
@@ -41,9 +42,11 @@ class JobController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Job $job)
     {
-        //
+        return view('jobs.edit', [
+            'job' => $job,
+        ]);
     }
 
     /**
