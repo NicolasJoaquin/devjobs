@@ -16,10 +16,10 @@
         @enderror
     </div>
     <div>
-        <x-input-label for="rate" :value="__('Salario')" />
+        <x-input-label for="rate_id" :value="__('Salario')" />
         <select 
-            wire:model="rate" 
-            id="rate"
+            wire:model="rate_id" 
+            id="rate_id"
             class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm w-full"
         >
             <option value="">-- Seleciona un rango --</option>
@@ -27,15 +27,15 @@
                 <option value="{{ $rate->id }}">{{ $rate->rate }}</option>            
             @endforeach
         </select>
-        <x-input-error :messages="$errors->get('rate')" class="mt-2" />
+        <x-input-error :messages="$errors->get('rate_id')" class="mt-2" />
         {{-- <x-text-input id="rate" class="block mt-1 w-full" type="text" name="rate" :value="old('rate')" placeholder="$750.000" />
         <x-input-error :messages="$errors->get('title')" class="mt-2" /> --}}
     </div>
     <div>
-        <x-input-label for="category" :value="__('Categoría')" />
+        <x-input-label for="category_id" :value="__('Categoría')" />
         <select 
-            wire:model="category" 
-            id="category"
+            wire:model="category_id" 
+            id="category_id"
             class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm w-full"
         >
             <option value="">-- Seleciona un rol --</option>
@@ -43,7 +43,7 @@
                 <option value="{{ $category->id }}">{{ $category->category }}</option>            
             @endforeach
         </select>
-        <x-input-error :messages="$errors->get('category')" class="mt-2" />
+        <x-input-error :messages="$errors->get('category_id')" class="mt-2" />
     </div>
     <div>
         <x-input-label for="company" :value="__('Empresa')" />
