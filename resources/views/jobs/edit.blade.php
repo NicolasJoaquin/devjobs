@@ -13,7 +13,9 @@
                         Editar vacante: {{ $job->title }}
                     </h1>
                     <div class="md:flex md:justify-center p-5">
-                        <livewire:edit-job />
+                        <livewire:edit-job 
+                            :job="$job"
+                        />
                     </div>
                 </div>
             </div>

@@ -17,7 +17,9 @@ class CreateJob extends Component
     public $last_date;
     public $description;
     public $image;
+
     use WithFileUploads;
+
     protected $rules =[
         "title" => "required|string",
         "rate_id" => "required",
@@ -31,7 +33,7 @@ class CreateJob extends Component
     {
         $data = $this->validate();
         $image = $this->image->store('public/jobs');
-        $image_name = str_replace('public/jobs/','', $image);
+        $image_name = str_replace('public/jobs/', '', $image);
         Job::create([
             "title" => $data["title"],
             "rate_id" => $data["rate_id"],

@@ -1,4 +1,4 @@
-<form action="" class="md:w-1/2 space-y-5" wire:submit.prevent='createJob'>
+<form action="" class="md:w-1/2 space-y-5" wire:submit.prevent='editJob'>
     <div>
         <x-input-label for="title" :value="__('Título de la vacante')" />
         <x-text-input 
@@ -82,22 +82,26 @@
         <x-input-error :messages="$errors->get('description')" class="mt-2" />
     </div>
     <div>
-        <x-input-label for="image" :value="__('Imágen')" />
+        <x-input-label for="image" :value="__('Imagen')" />
         <x-text-input 
             id="image" 
             class="block mt-1 w-full" 
             type="file" 
-            wire:model="image" 
+            wire:model="new_image" 
             accept="image/*"
         />
+        <div class="my-5 w-96">
+            <x-input-label :value="__('Imagen Actual')" />
+            <img src="{{ asset('storage/jobs/' . $image) }}" alt="{{ 'Imagen actual de la vacante ' . $title }}">
+        </div>
         {{-- Two way data binding / Enlace de datos bidireccional --}}
-        {{-- <div class="my-5 w-96">
-            @if ($image)
-                Imagen:
-                <img src="{{ $image->temporaryUrl() }}" alt="Imagen subida" class="rounded-xl shadow-md">
+        <div class="my-5 w-96">
+            @if ($new_image)
+                <x-input-label :value="__('Imagen Nueva')" />
+                <img src="{{ $new_image->temporaryUrl() }}" alt="{{ 'Nueva imagen de la vacante' . $title }}" class="rounded-xl shadow-md">
             @endif
         </div>
-        <x-input-error :messages="$errors->get('image')" class="mt-2" /> --}}
+        <x-input-error :messages="$errors->get('new_image')" class="mt-2" />
     </div>
     <x-primary-button class="w-full justify-center">
         {{ __('Crear vacante') }}
