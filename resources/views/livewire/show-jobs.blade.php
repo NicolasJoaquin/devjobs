@@ -20,9 +20,12 @@
                     <a href="{{ route('jobs.edit', $job->id) }}" class="bg-blue-800 hover:bg-blue-600 py-2 px-4 rounded-lg text-white text-xs font-bold text-center">
                         Editar
                     </a>
-                    <a href="#" class="bg-red-700 hover:bg-red-500 py-2 px-4 rounded-lg text-white text-xs font-bold text-center">
+                    <button 
+                        wire:click='$dispatch("showAlert", {id: {{ $job->id }}})'
+                        class="bg-red-700 hover:bg-red-500 py-2 px-4 rounded-lg text-white text-xs font-bold text-center"
+                    >
                         Eliminar
-                    </a>
+                    </button>
                 </div>
             </div>
         @empty
@@ -35,3 +38,33 @@
         {{ $jobs->links() }}
     </div>
 </div>
+@push('scripts')
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        // Llamando a la función desde Livewire
+        Livewire.on('showAlert', (id) => {
+            // alert('desde js ' + id.id);
+            // console.log(id);
+            Swal.fire({
+                title: "¿Estás seguro de querer eliminar esta vacante de empleo?",
+                text: "¡No podrás recuperarla!",
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#3085d6",
+                cancelButtonColor: "#d33",
+                confirmButtonText: "Sí, eliminar",
+                cancelButtonText: "Cancelar"
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    const job_id = id.id;
+                    Livewire.dispatch('deleteJob', {job: job_id});
+                    Swal.fire({
+                    title: "¡Vacante eliminada!",
+                    text: "Tu vacante de empleo fué eliminada con éxito.",
+                    icon: "success"
+                    });
+                }
+            });
+        });
+    </script>
+@endpush

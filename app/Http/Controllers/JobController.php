@@ -24,14 +24,6 @@ class JobController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
      * Display the specified resource.
      */
     public function show(string $id)
@@ -44,24 +36,9 @@ class JobController extends Controller
      */
     public function edit(Job $job)
     {
+        $this->authorize('update', $job);
         return view('jobs.edit', [
             'job' => $job,
         ]);
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        //
     }
 }
