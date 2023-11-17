@@ -19,4 +19,10 @@ class Job extends Model
         "image",
         "user_id",
     ];
+    public function category() {
+        return $this->belongsTo(Category::class);
+    }
+    public function rate() {
+        return $this->belongsTo(Rate::class);
+    }
 }
