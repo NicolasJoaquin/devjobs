@@ -43,4 +43,7 @@
             </p>
         </div>
     @endguest
+    @cannot('create', App\Models\Job::class)
+        <livewire:apply-job />
+    @endcannot
 </div>
