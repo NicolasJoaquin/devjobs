@@ -25,4 +25,7 @@ class Job extends Model
     public function rate() {
         return $this->belongsTo(Rate::class);
     }
+    public function applicants() {
+        return $this->hasMany(Applicant::class);
+    }
 }
