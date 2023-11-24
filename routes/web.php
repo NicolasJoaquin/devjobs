@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\JobController;
+use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -23,6 +24,9 @@ Route::get('/dashboard', [JobController::class, 'index'])->middleware(['auth', '
 Route::get('/jobs/create', [JobController::class, 'create'])->middleware(['auth', 'verified'])->name('jobs.create');
 Route::get('/jobs/{job}/edit', [JobController::class, 'edit'])->middleware(['auth', 'verified'])->name('jobs.edit');
 Route::get('/jobs/{job}', [JobController::class, 'show'])->name('jobs.show');
+// Notificaciones
+Route::get('/notifications', NotificationController::class)->name('notifications');
+
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

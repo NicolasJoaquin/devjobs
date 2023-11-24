@@ -3,6 +3,7 @@
 namespace App\Livewire;
 
 use App\Models\Job;
+use App\Notifications\NewApplicant;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 
@@ -27,6 +28,8 @@ class ApplyJob extends Component
             'user_id' => auth()->user()->id,
             'cv' => $cv_name,
         ]);
+        // Crear notificación y enviar mails
+        $this->job->recruiter->notify(new NewApplicant($this->job->id, $this->job->title, auth()->user()->id));
         // Se muestra un mensaje al usuario de éxito al postularse
         session()->flash('message', 'Te postulaste con éxito al empleo, ¡mucha suerte!');
         return redirect()->back();
