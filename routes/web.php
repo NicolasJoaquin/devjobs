@@ -18,14 +18,14 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('home');
 
-Route::get('/dashboard', [JobController::class, 'index'])->middleware(['auth', 'verified'])->name('jobs.index');
+Route::get('/dashboard', [JobController::class, 'index'])->middleware(['auth', 'verified', 'user.role'])->name('jobs.index');
 Route::get('/jobs/create', [JobController::class, 'create'])->middleware(['auth', 'verified'])->name('jobs.create');
 Route::get('/jobs/{job}/edit', [JobController::class, 'edit'])->middleware(['auth', 'verified'])->name('jobs.edit');
 Route::get('/jobs/{job}', [JobController::class, 'show'])->name('jobs.show');
 // Notificaciones
-Route::get('/notifications', NotificationController::class)->name('notifications');
+Route::get('/notifications', NotificationController::class)->middleware(['auth', 'verified', 'user.role'])->name('notifications');
 
 
 Route::middleware('auth')->group(function () {
