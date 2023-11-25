@@ -13,4 +13,7 @@ class Applicant extends Model
         "job_id",
         "cv",
     ];
+    public function user() {
+        return $this->belongsTo(User::class);
+    }
 }

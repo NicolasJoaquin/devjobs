@@ -26,7 +26,7 @@ class Job extends Model
         return $this->belongsTo(Rate::class);
     }
     public function applicants() {
-        return $this->hasMany(Applicant::class);
+        return $this->hasMany(Applicant::class)->orderBy('created_at', 'DESC');
     }
     public function recruiter() {
         return $this->belongsTo(User::class, "user_id");

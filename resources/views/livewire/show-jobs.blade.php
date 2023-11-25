@@ -14,8 +14,9 @@
                     </p>
                 </div>
                 <div class="flex gap-3 mt-5 md:mt-0 flex-col items-stretch md:flex-row">
-                    <a href="#" class="bg-slate-800 hover:bg-slate-600 py-2 px-4 rounded-lg text-white text-xs font-bold text-center">
-                        Candidatos
+                    <a href="{{ route('applicants.index', $job) }}" class="bg-slate-800 hover:bg-slate-600 py-2 px-4 rounded-lg text-white text-xs font-bold text-center">
+                        {{ $job->applicants->count() }} 
+                        @choice('Candidato|Candidatos', $job->applicants->count())
                     </a>
                     <a href="{{ route('jobs.edit', $job->id) }}" class="bg-blue-800 hover:bg-blue-600 py-2 px-4 rounded-lg text-white text-xs font-bold text-center">
                         Editar

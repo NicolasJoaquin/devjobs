@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ApplicantController;
 use App\Http\Controllers\JobController;
 use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\ProfileController;
@@ -24,6 +25,7 @@ Route::get('/dashboard', [JobController::class, 'index'])->middleware(['auth', '
 Route::get('/jobs/create', [JobController::class, 'create'])->middleware(['auth', 'verified'])->name('jobs.create');
 Route::get('/jobs/{job}/edit', [JobController::class, 'edit'])->middleware(['auth', 'verified'])->name('jobs.edit');
 Route::get('/jobs/{job}', [JobController::class, 'show'])->name('jobs.show');
+Route::get('/applicants/{job}', [ApplicantController::class, 'index'])->name('applicants.index');
 // Notificaciones
 Route::get('/notifications', NotificationController::class)->middleware(['auth', 'verified', 'user.role'])->name('notifications');
 

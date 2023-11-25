@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Job;
 use App\Models\Applicant;
 use Illuminate\Http\Request;
 
@@ -10,9 +11,11 @@ class ApplicantController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Job $job)
     {
-        //
+        return view('applicants.index', [
+            'job' => $job
+        ]);
     }
 
     /**
